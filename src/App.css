@@ -1,45 +1,150 @@
 .App {
-  text-align: center;
   font-family: Arial, sans-serif;
-  background-color: #f0f0f0;
+  background-color: #1e1e1e; /* Dark background */
   min-height: 100vh;
+  display: flex;
+  padding: 2rem;
+  color: #ccc; /* Light gray text for better visibility */
+}
+
+.leftPanel, .rightPanel {
+  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
+.leftPanel {
+  padding-right: 2rem; /* Adds some space between the panels */
+}
+
 h1 {
-  color: #333;
+  color: #ff8c00; /* Orange color for headings */
+  font-size: 24px;
 }
 
 .input {
-  width: 300px;
-  padding: 10px;
-  margin: 10px 0;
-  border-radius: 5px;
-  border: 1px solid #ccc;
+  width: 80%; /* Responsive width */
+  padding: 12px;
+  margin-top: 10px;
+  border-radius: 8px;
+  border: none; /* Removes border */
+  background-color: #333; /* Darker elements */
+  color: white; /* White text */
+  font-size: 16px;
 }
 
 .button {
-  padding: 10px 20px;
-  margin: 10px 0;
+  width: 80%;
+  padding: 12px;
+  margin-top: 10px;
+  border-radius: 8px;
   border: none;
-  border-radius: 5px;
-  background-color: #007bff;
-  color: white;
+  background-color: #ff8c00; /* Orange background */
+  color: #1e1e1e; /* Dark text */
   font-size: 16px;
   cursor: pointer;
 }
 
 .button:hover {
-  background-color: #0056b3;
+  background-color: #e67600; /* Darker orange on hover */
+}
+
+.imageContainer {
+  border: 2px solid #ff8c00; /* Orange border */
+  padding: 20px; /* Space between the image and the border */
+  display: inline-block; /* Makes the container fit the content */
+  margin-top: 20px; /* Optional: Adds space above the container */
 }
 
 .image {
-  margin-top: 20px;
-  max-width: 512px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  max-width: 100%; /* Ensures the image is responsive within the container */
+  display: block; /* Removes bottom space/margin under the image */
+  border-radius: 10px; /* Rounded corners for the image */
 }
 
+.spinner {
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border-left-color: #ff8c00; /* Orange spinner */
+  animation: spin 1s linear infinite; /* Ensure animation is linear and infinite */
+  margin-top: 20px; /* Adds space above the spinner */
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
+.error {
+  color: #ff4500; /* Orange color for error text */
+}
+
+.description {
+  font-size: 16px;
+  line-height: 1.5;
+  color: #ccc; /* Light gray for better readability */
+  text-align: center;
+  max-width: 80%; /* Responsive width */
+}
+.dropdown {
+  width: 80%; /* Responsive width */
+  padding: 12px;
+  margin-top: 10px;
+  border-radius: 8px;
+  border: 1px solid #ff8c00; /* Orange border to match the theme */
+  background-color: #333; /* Dark background to fit the dark theme */
+  color: white; /* White text for visibility */
+  font-size: 16px;
+  cursor: pointer;
+  appearance: none; /* Removes default system appearance */
+  -webkit-appearance: none; /* Removes default Chrome & Safari appearance */
+  -moz-appearance: none; /* Removes default Firefox appearance */
+  position: relative; /* Required for positioning the arrow */
+}
+
+.dropdown:focus {
+  outline: none; /* Removes the default focus outline */
+  box-shadow: 0 0 0 2px #ff8c00; /* Adds a custom focus orange box shadow */
+}
+
+/* Custom arrow style */
+.dropdown::-ms-expand {
+  display: none; /* Hide the default arrow in IE */
+}
+
+.dropdown::after {
+  content: '▼'; /* Arrow character */
+  font-size: 16px;
+  position: absolute;
+  right: 10px;
+  top: 14px;
+  color: white; /* White arrow */
+  pointer-events: none; /* Arrow should not be clickable */
+}
+@media (max-width: 768px) {
+  .App {
+    flex-direction: column; /* Stack panels vertically */
+    padding: 1rem; /* Adjust padding for smaller screens */
+  }
+
+  .leftPanel {
+    padding-right: 0; /* Remove right padding on smaller screens */
+  }
+
+  .input, .button, .dropdown {
+    width: 100%; /* Full width on smaller screens */
+  }
+
+  .imageContainer {
+    margin-top: 20px; /* Add space above the image container */
+  }
+}
